@@ -1,0 +1,62 @@
+<%- include('../partials/header') %>
+    
+    <main id="main" role="main">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="text-center mt-4"><%= title %></h1>
+                    <!-- <p class="lead">
+                        by
+                        <a href="#">username</a>
+                    </p> -->
+           
+                    <!-- <p>Date</p> -->
+                    <!-- <hr> -->
+                    <p class="lead display-6 mt-4"><%= post.title %></p>
+                    <hr>
+                    <h5 class="card-header">Details:</h5>
+                    <div class="card-body">
+                    <p><%= post.details %></p>
+                    </div>
+                    <div class="card mb-5">
+                        <h5 class="card-header">Leave a Comment:</h5>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="media mb-4">
+                        <div class="profile-pic mr-3 bg-light">
+                            <i class="fa fa-user fa-2x"></i>
+                        </div>
+                        <div class="media-body">
+                            <h5 class="mt-0">User Name</h5>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur repellat quod consequuntur
+                                velit vitae molestiae odit iure sit repellendus aut. Ex voluptatum alias fugiat, praesentium
+                                vero ratione qui earum eligendi.</p>
+                        </div>
+                    </div>
+                    <div class="media mb-4">
+                        <div class="profile-pic mr-3 bg-light">
+                            <i class="fa fa-user fa-2x"></i>
+                        </div>
+                        <div class="media-body">
+                            <h5 class="mt-0">Full Name</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, quos molestiae. Quidem dolore
+                                exercitationem temporibus hic, quisquam nisi ex qui iste earum maiores unde adipisci veritatis
+                                veniam eius suscipit facere.</p>
+                            <div class="media mt-4">
+                                <div class="profile-pic mr-3 bg-light">
+                                    <i class="fa fa-user fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+<%- include('../partials/footer') %>

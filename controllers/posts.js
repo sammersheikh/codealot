@@ -5,6 +5,8 @@ module.exports = {
     index,
     new: newPost,
     create,
+    show,
+    delete: deletePost,
 }
 
 function index(req, res) {
@@ -25,4 +27,18 @@ function create(req, res) {
         res.redirect('/posts')
     })
 
+}
+
+function show(req, res) {
+    Post.findById(req.params.id, function(err, post) {
+        res.render('posts/show', {post, title: 'View Post'})
+        console.log(post)
+    })
+}
+
+function deletePost(req, res, next) {
+    Post.findByIdAndRemove(req.params.id, function(err, post) {
+        if (err) return next(err)
+        res.redirect('/posts')
+    })
 }
