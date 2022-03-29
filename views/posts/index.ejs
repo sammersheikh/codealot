@@ -1,24 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feed</title>
-</head>
-<body>
-    <h1>Feed</h1>
-    <form >
+<%- include('../partials/header') %>
 
-    </form>
+    <h1 class= "text-center mt-4 mb-2 display-4">Feed</h1>
+    <div class= "text-center m-3">
+    <a href="/posts/new"><button class="btn btn-primary btn-lg">Add Post</button></a> 
+    </div>
     <% post.forEach(function(p) { %>
     <ul>
-        <li><%= p.title %></li>
-        <li><%= p.details %></li>
-        <li><%= p.isSolved %></li>
-        <li><%= p.comments %></li>
+  <div class="card text-start mx-auto col-sm-2" >
+  <div class="card-header">
+    Category
+  </div>
+  <div class="card-body">
+    <h3 class="card-title"><%= p.title %></h3>
+    <p class="card-text lead"><%- p.details %></p>
+    <a href="#" class="btn btn-outline-primary">View Full Post</a>
+  </div>
+</div>
     </ul>
     <% }) %>
-    <a href="/posts/new"><button>Add Post</button></a> 
-</body>
-</html>
+      
+      <!-- <script>
+        $('.nav-item').class('active')
+      </script> -->
+
+<%- include('../partials/footer') %>
