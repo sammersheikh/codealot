@@ -7,6 +7,8 @@ module.exports = {
     create,
     show,
     delete: deletePost,
+    edit,
+    update,
 }
 
 function index(req, res) {
@@ -41,4 +43,28 @@ function deletePost(req, res, next) {
         if (err) return next(err)
         res.redirect('/posts')
     })
+}
+
+// function edit(req, res) {
+//     Post.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+//         if (err) { console.error(error) }
+//         res.redirect(`/`+req.params.id)
+//     })
+// }
+
+async function edit(req, res) {
+    try {
+        const post = await Post.findById(req.params.id)
+        res.render('posts/edit', {post})
+    } catch {
+        res.redirect('/posts')
+    }  
+}
+
+function update(req, res) {
+    Post.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+            post.save()
+                if (err) { console.error(error) }
+                res.redirect('/posts')
+            })
 }
