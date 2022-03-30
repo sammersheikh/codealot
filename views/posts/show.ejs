@@ -3,7 +3,7 @@
     <main id="main" role="main">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8">
+                <div class="col-lg-8 cardForm">
                     <h1 class="text-center mt-4"><%= title %></h1>
                     <!-- <p class="lead">
                         by
@@ -21,29 +21,53 @@
                     <div class="card-body">
                     <p class="lead"><%= post.details %></p>
                     </div>
-                    <div class="card mb-5">
-                        <h5 class="card-header">Leave a Comment:</h5>
-                        <div class="card-body">
-                            <form>
-                                <div class="form-group">
-                                    <textarea class="form-control" rows="3"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary mt-2">Submit</button>
-                            </form>
+                    <div class="dropdown">
+                        <button class="lvC btn btn-secondary dropdown-toggle mb-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                          Leave a Comment
+                        </button>
+                        <div class="com card mb-3">
+                            <h5 class="card-header">Leave a Comment:</h5>
+                            <div class="card-body">
+                                <form action="/posts/<%= post.id %>/comments" method="POST">
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="3" name="comment"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <div class="media mb-4">
+                      </div>
+                    
+                    <% if (post.comments.length) { %>
+                    <% post.comments.forEach(function(comment) { %>
+                    <div class="comment media mb-4">
                         <div class="profile-pic mr-3 bg-light">
                             <i class="fa fa-user fa-2x"></i>
                         </div>
                         <div class="media-body">
                             <h5 class="mt-0">User Name</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur repellat quod consequuntur
-                                velit vitae molestiae odit iure sit repellendus aut. Ex voluptatum alias fugiat, praesentium
-                                vero ratione qui earum eligendi.</p>
+                            <p><%= comment.comment %></p>
                         </div>
                     </div>
+                    <% }) %>
+                <% } %>
                 </div>
+        <script>
+            $('.comment').last().fadeIn(2500)
+            $('.com').hide()
+            $('.lvC').on('click', function() {
+                if($('.com').is(":visible")) {
+                $('.com').fadeOut(500)
+                // $('.comment').animate({bottom: "+=300px"})
+                } else if ($('.com').is(':hidden')) {
+                    // $('div.comment').animate({bottom: "-=300px"},"slow")
+                    $('.com').fadeIn(800)
+                }
+            }) 
+            
+        
+            
+        </script>
 
 
 <%- include('../partials/footer') %>
