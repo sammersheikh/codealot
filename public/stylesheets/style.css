@@ -12,6 +12,20 @@ a {
   align-items: center;
 }
 
+.username {
+    display:inline-block;
+    margin-right:10px;
+}
+
+.useravatar {
+  display:inline-block;
+}
+
+.closeBtn {
+  display:inline-block;
+}
+
+
 img {
   border-radius: 50%;
   height: 40px;

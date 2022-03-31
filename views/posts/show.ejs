@@ -42,14 +42,18 @@
                     
                     <% if (post.comments.length) { %>
                     <% post.comments.forEach(function(comment) { %>
-                    <div class="comment media mb-4">
-                        <div class="profile-pic mr-3 bg-light">
-                            <i class="fa fa-user fa-2x"></i>
-                        </div>
-                        <div class="comment media-body">
-                            <tr>
-                                <td class="review-user"><img alt="avatar" src="<%= comment.userAvatar %>"><h5><%= comment.userName %></h5></td>
-                                </tr>
+                    <div class="card comment media mb-4">
+                        <div class="profile-pic mr-3 bg-light useravatar">
+                            <!-- <i class="fa fa-user fa-2x"></i> -->
+                            <img alt="avatar" src="<%= comment.userAvatar %>">
+                            <div class="username"><h5><%= comment.userName %></h5></div>
+                            <div class="closeBtn float-end m-2">
+                                <form action="/posts/<%=comment.id%>/?_METHOD=DELETE">
+                            <button type="button" class="btn-close" aria-label="Close"></button>
+                                </form>
+                            </div>
+                        </div>                     
+                        <div class="comment media-body m-3">
                             <p><%= comment.comment %></p>
                         </div>
                     </div>
