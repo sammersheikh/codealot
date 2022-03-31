@@ -21,10 +21,11 @@
                     <div class="card-body">
                     <p class="lead"><%= post.details %></p>
                     </div>
-                    <div class="dropdown">
-                        <button class="lvC btn btn-secondary dropdown-toggle mb-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <div class="dropdown"> -->
+                        <!-- <button class="lvC btn btn-secondary dropdown-toggle mb-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                           Leave a Comment
-                        </button>
+                        </button> -->
+                        <% if (user) { %>
                         <div class="com card mb-3">
                             <h5 class="card-header">Leave a Comment:</h5>
                             <div class="card-body">
@@ -32,11 +33,12 @@
                                     <div class="form-group">
                                         <textarea class="form-control" rows="3" name="comment"></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                                    <button type="submit" class="sub btn btn-primary mt-2">Submit</button>
                                 </form>
                             </div>
                         </div>
-                      </div>
+                        <% } %>
+                      <!-- </div> -->
                     
                     <% if (post.comments.length) { %>
                     <% post.comments.forEach(function(comment) { %>
@@ -44,8 +46,10 @@
                         <div class="profile-pic mr-3 bg-light">
                             <i class="fa fa-user fa-2x"></i>
                         </div>
-                        <div class="media-body">
-                            <h5 class="mt-0">User Name</h5>
+                        <div class="comment media-body">
+                            <tr>
+                                <td class="review-user"><img alt="avatar" src="<%= comment.userAvatar %>"><h5><%= comment.userName %></h5></td>
+                                </tr>
                             <p><%= comment.comment %></p>
                         </div>
                     </div>
@@ -53,16 +57,10 @@
                 <% } %>
                 </div>
         <script>
-            $('.comment').last().fadeIn(2500)
-            $('.com').hide()
-            $('.lvC').on('click', function() {
-                if($('.com').is(":visible")) {
-                $('.com').fadeOut(500)
-                // $('.comment').animate({bottom: "+=300px"})
-                } else if ($('.com').is(':hidden')) {
-                    // $('div.comment').animate({bottom: "-=300px"},"slow")
-                    $('.com').fadeIn(800)
-                }
+            $('div.comment').last().fadeIn(4500)
+            // $('.com').hide()
+            $('.sub').on('click', function() {
+                
             }) 
             
         

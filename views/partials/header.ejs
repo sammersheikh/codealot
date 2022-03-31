@@ -33,6 +33,15 @@
             <button class="button-28" id="darkMode">Dark Mode</button>
             <button class="button-28" id="lightMode">Light Mode</button>
           </li>
+          <% if (user) { %>
+            <li class="nav-item">
+            <a href="/logout">LOG OUT</a>
+            </li>
+          <% } else { %>
+            <li class="nav-item">
+            <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+            </li>
+          <% } %>
         </ul>
       </div>
     </div>
