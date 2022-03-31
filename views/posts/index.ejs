@@ -5,18 +5,22 @@
     <a href="/posts/new"><button class="btn btn-primary btn-lg">Add Post</button></a> 
     </div>
     <% post.forEach(function(p) { %>
-    <ul>
-<div class="container mb-5">
-    <div class="row justify-content-center">
+    <!-- <ul> -->
+      <main id="main" role="main"></main>
+      <div class="container mb-3">
+        <div class="row justify-content-center">
+      <div class="card col-lg-4 cardForm">
+        <div class="useravatar">
+          <h6 class="username mt-3">Category</h6> 
+          <div class="float-end mt-3">
+            <form class="text-end" action="/posts/<%= p.id %>?_method=DELETE" method="POST">
+              <button type="submit" class="btn-close" aria-label="Close"></button>
+            </form>   
+          </div>
+        </div>
+        <hr>
   <!-- <div class="card text-start mx-auto col-lg-4" > -->
-    <div class="col-lg-4 cardForm">
-  <div class="card-header flex-fill">
-    <h6 class="mt-2">Category</h6>    
-  </div>
   <div class="card-body">
-    <form class="text-end" action="/posts/<%= p.id %>?_method=DELETE" method="POST">
-      <button type="submit" class="btn-close" aria-label="Close"></button>
-      </form>
     <h3 class="card-title"><%= p.title %></h3>
     <p class="card-text lead"><%- p.details %></p>
     <a href="posts/<%= p.id %>" class="btn btn-outline-primary">View Full Post</a>
@@ -24,7 +28,7 @@
    </div>
      </div>
 </div>
-    </ul>
+    <!-- </ul> -->
     <% }) %>
       
       <!-- <script>

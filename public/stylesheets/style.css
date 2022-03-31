@@ -12,6 +12,10 @@ a {
   align-items: center;
 }
 
+.card {
+  padding: 0px;
+}
+
 .username {
     display:inline-block;
     margin-right:10px;

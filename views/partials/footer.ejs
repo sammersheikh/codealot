@@ -6,6 +6,7 @@
                 if($('body').css('backgroundColor') !== 'black') {
                     $('body').css('backgroundColor','black')
                     $('body').css('color','white')
+                    $('.card').css("backgroundColor",'black')
                     $('.cardForm').css("border", "2px solid")
                     $('.cardForm').css("border-radius", "10px")
                     $('#darkMode').hide()
@@ -14,6 +15,7 @@
                 $('#lightMode').on('click', function() {
                     $('body').css('backgroundColor', 'white')
                     $('body').css('color','black')
+                    $('.card').css("backgroundColor",'white')
                     $('.cardForm').css("border", "0px solid")
                     $('#lightMode').hide()
                     $('#darkMode').show()
