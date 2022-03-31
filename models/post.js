@@ -29,6 +29,8 @@ const postSchema = new Schema({
         default: false,
     },
     comments: [commentSchema],
+ }, {
+        timestamps: true
 })
 
 

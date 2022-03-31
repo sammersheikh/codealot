@@ -41,14 +41,14 @@
                         </div>
                         <% } %>
                       <!-- </div> -->
-                    
+                    <h5 class="mb-2">Comments:</h5>
                     <% if (post.comments.length) { %>
                     <% post.comments.forEach(function(comment) { %>
                     <div class="card comment media mb-3">
                         <div class="profile-pic mr-3 bg-light useravatar">
                             <!-- <i class="fa fa-user fa-2x"></i> -->
-                            <img alt="avatar" src="<%= comment.userAvatar %>">
-                            <div class="username"><h5><%= comment.userName %></h5></div>
+                            <img class="m-2" alt="avatar" src="<%= comment.userAvatar %>">
+                            <div class="username"><h6><%= comment.userName %></h6></div>
                             <div class="closeBtn float-end m-2">
                                 <% if (user && user._id.equals(comment.user)) { %>
                                 <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
