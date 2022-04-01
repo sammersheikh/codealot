@@ -13,6 +13,7 @@ module.exports = {
 
 function index(req, res) {
     Post.find({}, function(err, post) {
+        post.reverse()
         res.render('posts/index', {post})
     })
 }

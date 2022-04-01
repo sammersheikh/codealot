@@ -4,6 +4,7 @@
     <div class= "text-center m-3">
     <a href="/posts/new"><button class="btn btn-primary btn-lg">Add Post</button></a> 
     </div>
+    
     <% post.forEach(function(p) { %>
     <!-- <ul> -->
       <main id="main" role="main"></main>
@@ -24,7 +25,7 @@
     <h3 class="card-title"><%= p.title %></h3>
     <p class="card-text lead"><%- p.details %></p>
     <a href="posts/<%= p.id %>" class="btn btn-outline-primary">View Full Post</a>
-   
+    <p class="mt-4 text-muted"><%= (new Date(p.createdAt)).toLocaleString() %></p>
   </div>
    </div>
      </div>
