@@ -6,30 +6,18 @@
                 <div class="card col-lg-8 cardForm mt-3">
                     <h1 class="text-center mt-4"><%= title %></h1>
                     <p class="mt-4 text-muted"><%= (new Date(post.createdAt)).toLocaleString() %></p>
-                    <!-- <p class="lead">
-                        by
-                        <a href="#">username</a>
-                    </p> -->
-           
-                    <!-- <p>Date</p> -->
-                    <!-- <hr> -->
                     <% if (user) { %>
                     <div class="text-end">
                     <a href="/posts/<%= post.id %>/edit"><button class="btn btn-secondary">Edit</button></a>
                     </div>
                     <% } %>
                     <p class="lead display-6 m-3"><%= post.title %></p>
-                    <!-- <hr> -->
                     <div class="card mb-2">
                     <h5 class="card-header">Details:</h5>
                     <div class="card-body">
                     <p class="lead"><%= post.details %></p>
                     </div>
                     </div>
-                    <!-- <div class="dropdown"> -->
-                        <!-- <button class="lvC btn btn-secondary dropdown-toggle mb-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                          Leave a Comment
-                        </button> -->
                         <% if (user) { %>
                         <div class="com card mb-3">
                             <h5 class="card-header">Leave a Comment:</h5>
@@ -43,13 +31,11 @@
                             </div>
                         </div>
                         <% } %>
-                      <!-- </div> -->
                     <h5 class="mb-2">Comments:</h5>
                     <% if (post.comments.length) { %>
                     <% post.comments.forEach(function(comment) { %>
                     <div class="card comment media mb-3">
                         <div class="avi profile-pic mr-3 bg-light useravatar">
-                            <!-- <i class="fa fa-user fa-2x"></i> -->
                             <img class="m-2" alt="avatar" src="<%= comment.userAvatar %>">
                             <div class="username"><h6><%= comment.userName %></h6></div>
                             <div class="closeBtn float-end m-2">
@@ -71,7 +57,6 @@
 
         <script>
             $('div.comment').last().fadeIn(4500)
-            // $('.com').hide()
             $('.sub').on('click', function() {
                 
             }) 

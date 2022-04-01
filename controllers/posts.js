@@ -46,13 +46,6 @@ function deletePost(req, res, next) {
     })
 }
 
-// function edit(req, res) {
-//     Post.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
-//         if (err) { console.error(error) }
-//         res.redirect(`/`+req.params.id)
-//     })
-// }
-
 async function edit(req, res) {
     try {
         const post = await Post.findById(req.params.id)

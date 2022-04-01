@@ -10,6 +10,8 @@
                 $('body').css('backgroundColor','black')
                 $('body').css('color','white')
                 $('h6').css('color', 'black')
+                $('.btn-close').addClass('btn-close-white')
+                $('.category').css("color", "white")
                 $('.card').css("backgroundColor",'black')
                 $('.cardForm').css("border", "2px solid")
                 $('.cardForm').css("border-radius", "10px")
@@ -27,23 +29,24 @@
                 $('body').css('backgroundColor', 'white')
                 $('body').css('color','black')
                 $('.card').css("backgroundColor",'white')
+                $('.btn-close').removeClass('btn-close-white')
+                $('.category').css("color", "black")
                 $('.cardForm').css("border", "0px solid")
                 $('.button-28').css("backgroundColor","white")
                 $('.button-28').css("color","black")
                 $('#lightMode').hide()
                 $('#darkMode').show()
-                // let val = sessionStorage.getItem("pageMode");
                 val = -1
                 sessionStorage.setItem("pageMode", `${val}`)    
         }
-        function doFirst() {
+        function setMode() {
         if (sessionStorage.pageMode == 1) {
             darkSwitch()
      } else if (sessionStorage.pageMode == -1) {
             lightSwitch()
      }
     }
-    doFirst()
+    setMode()
 </script>
 
 </body>

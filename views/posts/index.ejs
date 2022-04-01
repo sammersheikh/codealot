@@ -6,13 +6,12 @@
     </div>
     
     <% post.forEach(function(p) { %>
-    <!-- <ul> -->
       <main id="main" role="main"></main>
       <div class="container mb-3">
         <div class="row justify-content-center">
       <div class="card col-lg-4 cardForm">
         <div class="useravatar">
-          <h6 class="username mt-3">Category</h6> 
+          <h6 class="category username mt-3">Category</h6> 
           <div class="float-end mt-3">
             <form class="text-end" action="/posts/<%= p.id %>?_method=DELETE" method="POST">
               <button type="submit" class="btn-close" aria-label="Close"></button>
@@ -20,7 +19,6 @@
           </div>
         </div>
         <hr>
-  <!-- <div class="card text-start mx-auto col-lg-4" > -->
   <div class="card-body">
     <h3 class="card-title"><%= p.title %></h3>
     <p class="card-text lead"><%- p.details %></p>
@@ -30,11 +28,7 @@
    </div>
      </div>
 </div>
-    <!-- </ul> -->
     <% }) %>
       
-      <!-- <script>
-        $('.nav-item').class('active')
-      </script> -->
 
 <%- include('../partials/footer') %>
