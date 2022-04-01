@@ -13,14 +13,14 @@
                     <% } %>
                     <p class="lead display-6 m-3"><%= post.title %></p>
                     <div class="card mb-2">
-                    <h5 class="card-header">Details:</h5>
+                    <h5 class="head card-header">Details:</h5>
                     <div class="card-body">
                     <p class="lead"><%= post.details %></p>
                     </div>
                     </div>
                         <% if (user) { %>
                         <div class="com card mb-3">
-                            <h5 class="card-header">Leave a Comment:</h5>
+                            <h5 class="head card-header">Leave a Comment:</h5>
                             <div class="card-body">
                                 <form action="/posts/<%= post.id %>/comments" method="POST">
                                     <div class="form-group">
@@ -35,13 +35,13 @@
                     <% if (post.comments.length) { %>
                     <% post.comments.forEach(function(comment) { %>
                     <div class="card comment media mb-3">
-                        <div class="avi profile-pic mr-3 bg-light useravatar">
+                        <div class="head avi profile-pic mr-3 bg-light useravatar">
                             <img class="m-2" alt="avatar" src="<%= comment.userAvatar %>">
                             <div class="username"><h6><%= comment.userName %></h6></div>
                             <div class="closeBtn float-end m-2">
                                 <% if (user && user._id.equals(comment.user)) { %>
                                 <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                            <button type="submit" class="btn-close" aria-label="Close"></button>
+                            <button type="submit" class="sub btn-close" aria-label="Close"></button>
                                 </form>
                                 <% } %>
                             </div>
@@ -49,17 +49,31 @@
                         <div class="comment media-body m-3">
                             <p><%= comment.comment %></p>
                         </div>
+                        <!-- <button class="btn btn-sm btn-outline-success upvoteBtn">Upvote</button> -->
                     </div>
+                    
                     <% }) %>
                 <% } %>
                 </div>
 
 
         <script>
-            $('div.comment').last().fadeIn(4500)
+            // let vote = 0
+            // $('.upvoteBtn').on('click', countVote)
+
+            // function countVote() {
+            //     vote++
+            //     localStorage.setItem("upVote", `${vote}`)
+            //     console.log(vote)
+            // }
+
+
+            $('.comment').last().fadeIn(4500)
             $('.sub').on('click', function() {
                 
             }) 
+
+
         </script>
 
 
