@@ -31,7 +31,7 @@ function create(req, res) {
     const post = new Post(req.body)
     post.save(function(err) {
         if (err) return res.redirect('/posts/new')
-        console.log(post)
+        // console.log(post)
         res.redirect('/posts')
     })
 
@@ -39,8 +39,15 @@ function create(req, res) {
 
 function show(req, res) {
     Post.findById(req.params.id, function(err, post) {
+        if (post.comments) {
+            // order the comments from highest upvotes to lowest upvotes
+            console.log('TESTETSTESTETSTSET')
+            post.comments.sort(function(a, b) {
+                return b.upvotes - a.upvotes
+            })
+    }
         res.render('posts/show', {post, title: 'View Post'})
-        console.log(post)
+        // console.log(post)
     })
 }
 

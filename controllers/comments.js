@@ -8,11 +8,11 @@ module.exports = {
 
 function addComment(req, res) {
     Post.findById(req.params.id, function(err, post) {
-
+        if (req.user) {
         req.body.user = req.user._id
         req.body.userName = req.user.name
         req.body.userAvatar = req.user.avatar
-
+        }
         post.comments.push(req.body)
         post.save(function(err) {
             res.redirect(`/posts/${post._id}`)
@@ -40,11 +40,8 @@ function update(req, res, next) {
     Post.findOne({ 'comments._id':req.params.id })
     .then(function(post) {
 
-        console.log('HELLLLERERER')
-        console.log(req.body.upvotes)
         const comment = post.comments.id(req.params.id)
         comment.upvotes = comment.upvotes + 1
-        console.log(comment.upvotes)
         post.save()
         .then(function() {
             res.redirect(`/posts/${post._id}`)
