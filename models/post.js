@@ -8,6 +8,7 @@ const commentSchema = new Schema({
     },
     upvotes: {
         type: Number,
+        default: 0
     },
     user: {
         type: Schema.Types.ObjectId,

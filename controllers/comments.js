@@ -13,7 +13,6 @@ function addComment(req, res) {
         req.body.userName = req.user.name
         req.body.userAvatar = req.user.avatar
 
-        post.comments.upvotes = 0
         post.comments.push(req.body)
         post.save(function(err) {
             res.redirect(`/posts/${post._id}`)
@@ -24,7 +23,6 @@ function addComment(req, res) {
 function deleteComment(req, res, next) {
     Post.findOne({ 'comments._id':req.params.id })
     .then(function(post) {
-        console.log('hello')
         const comment = post.comments.id(req.params.id)
         if(!comment.user.equals(req.user._id)) return res.redirect(`/posts/${post._id}`)
         comment.remove()
@@ -38,12 +36,20 @@ function deleteComment(req, res, next) {
     })
 }
 
-function update(req, res) {
+function update(req, res, next) {
     Post.findOne({ 'comments._id':req.params.id })
     .then(function(post) {
-        console.log(req.body.name)
+
+        console.log('HELLLLERERER')
+        console.log(req.body.upvotes)
         const comment = post.comments.id(req.params.id)
-        // console.log(`COMMENT: ${comment}`)
-        res.redirect(`/posts/${post._id}`)
+        comment.upvotes = comment.upvotes + 1
+        console.log(comment.upvotes)
+        post.save()
+        .then(function() {
+            res.redirect(`/posts/${post._id}`)
+        }).catch(function(err) {
+            return next(err)
+        })
     })
 }

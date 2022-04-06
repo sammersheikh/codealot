@@ -50,9 +50,8 @@
                         <div class="comment media-body m-3">
                             <p><%= comment.comment %></p>
                         </div>
-                        <form action="/comments/<%= comment._id %>?_method=PUT" method="POST" name="upvotes" value='1'>
-                            <p><%= comment.upvotes %></p>
-                        <button type="submit" class="m-2 btn btn-sm btn-outline-success float-end upvoteBtn">Upvote</button>
+                        <form action="/comments/<%= comment._id %>?_method=PUT" method="POST" name="upvotes">
+                        <button type="submit" class="m-2 btn btn-sm btn-outline-success float-end upvoteBtn"><p class="mb-0 useravatar">Upvote <%= comment.upvotes %></p></button>
                         </form>
                     </div>
                     
