@@ -11,24 +11,26 @@
         <div class="row justify-content-center">
       <div class="card col-lg-4 cardForm">
         <div class="useravatar">
-          <h6 class="category username mt-3">Category</h6> 
+          <h6 class="category username mt-3">Posted by <%= p.userName ? p.userName : 'Anonymous' %></h6> 
+          <% if (user && user._id.equals(p.user)) { %>
           <div class="float-end mt-3">
             <form class="text-end" action="/posts/<%= p.id %>?_method=DELETE" method="POST">
               <button type="submit" class="btn-close" aria-label="Close"></button>
             </form>   
           </div>
+          <% } %>
         </div>
         <hr>
   <div class="card-body">
     <h3 class="card-title"><%= p.title %></h3>
     <p class="card-text lead"><%- p.details %></p>
     <a href="posts/<%= p.id %>" class="btn btn-outline-primary">View Full Post</a>
-    <p class="mt-4 text-muted"><%= (new Date(p.createdAt)).toLocaleString() %></p>
+    <p class="mt-4 text-muted"><%= (p.createdAt).toLocaleString() %></p>
   </div>
    </div>
      </div>
 </div>
     <% }) %>
-      
+
 
 <%- include('../partials/footer') %>

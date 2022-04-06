@@ -3,6 +3,7 @@ const Post = require('../models/post')
 module.exports = {
     addComment,
     delete: deleteComment,
+    update,
 }
 
 function addComment(req, res) {
@@ -12,6 +13,7 @@ function addComment(req, res) {
         req.body.userName = req.user.name
         req.body.userAvatar = req.user.avatar
 
+        post.comments.upvotes = 0
         post.comments.push(req.body)
         post.save(function(err) {
             res.redirect(`/posts/${post._id}`)
@@ -33,5 +35,15 @@ function deleteComment(req, res, next) {
             return next(err)
         })
 
+    })
+}
+
+function update(req, res) {
+    Post.findOne({ 'comments._id':req.params.id })
+    .then(function(post) {
+        console.log(req.body.name)
+        const comment = post.comments.id(req.params.id)
+        // console.log(`COMMENT: ${comment}`)
+        res.redirect(`/posts/${post._id}`)
     })
 }

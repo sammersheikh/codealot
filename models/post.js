@@ -6,6 +6,9 @@ const commentSchema = new Schema({
         type: String,
         required: true
     },
+    upvotes: {
+        type: Number,
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User' 
@@ -28,6 +31,12 @@ const postSchema = new Schema({
     isSolved: {
         default: false,
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    userName: String,
+    userAvatar: String,
     comments: [commentSchema],
  }, {
         timestamps: true
