@@ -6,7 +6,7 @@
                 <div class="card col-lg-8 cardForm mt-3">
                     <h1 class="text-center mt-4"><%= title %></h1>
                     <p>Created by: <%= post.userName ? post.userName : 'Anonymous' %></p>
-                    <p class="mt-4 text-muted"><%= (new Date(post.createdAt)).toLocaleString() %></p>
+                    <p class="mt-4 text-muted"><%= (post.createdAt).toLocaleString() %></p>
                     <% if (user && user._id.equals(post.user)) { %>
                     <div class="text-end">
                     <a href="/posts/<%= post.id %>/edit"><button class="btn btn-secondary">Edit</button></a>
@@ -42,7 +42,7 @@
                             <div class="closeBtn float-end m-2">
                                 <% if (user && user._id.equals(comment.user)) { %>
                                 <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                            <button type="submit" class="sub btn-close" aria-label="Close"></button>
+                            <button type="submit" class="m-0 sub btn btn-close" aria-label="Close"></button>
                                 </form>
                                 <% } %>
                             </div>
@@ -50,9 +50,15 @@
                         <div class="comment media-body m-3">
                             <p><%= comment.comment %></p>
                         </div>
+                        <% if (user) { %>
                         <form action="/comments/<%= comment._id %>?_method=PUT" method="POST" name="upvotes">
                         <button type="submit" class="m-2 btn btn-sm btn-outline-success float-end upvoteBtn"><p class="mb-0 useravatar">Upvote <%= comment.upvotes %></p></button>
                         </form>
+                        <% } else if (!user) { %>
+                            <form>
+                            <button class="upvoteBtnNoUser m-2 btn btn-sm btn-outline-success float-end upvoteBtn"><p class="mb-0 useravatar">Upvote <%= comment.upvotes %></p></button>
+                            </form>
+                            <% } %>
                     </div>
                     
                     <% }) %>
@@ -70,7 +76,9 @@
             //     console.log(vote)
             // }
 
-
+            $('.upvoteBtnNoUser').click(function() {
+                alert('You must be signed in to upvote')
+            })
             $('.comment').last().fadeIn(4500)
             $('.sub').on('click', function() {
                 

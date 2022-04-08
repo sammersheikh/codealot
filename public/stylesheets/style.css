@@ -5,6 +5,7 @@
   align-items: center;
 }
 
+
 .card {
   padding: 0px;
 }
@@ -16,6 +17,7 @@
 
 .useravatar {
   display:inline-block;
+  
 }
 
 .closeBtn {
