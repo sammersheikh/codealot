@@ -14,7 +14,13 @@
               </div>
               <form action='/posts' method="POST">
               <div class="row align-items-center">
-                
+                <label for="cars">Choose a car:</label>
+                <select name="category" id="category">
+                  <option value="Coding Question">Coding Question</option>
+                  <option value="Tips/Tricks">Tips/Tricks</option>
+                  <option value="Misc">Misc</option>
+                </select>
+
                 <div class="col mt-2">
                   <input type="text" class="form-control" placeholder="Title" name="title">
                 </div>

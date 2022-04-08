@@ -55,9 +55,9 @@
                         <button type="submit" class="m-2 btn btn-sm btn-outline-success float-end upvoteBtn"><p class="mb-0 useravatar">Upvote <%= comment.upvotes %></p></button>
                         </form>
                         <% } else if (!user) { %>
-                            <form>
+                            <div>
                             <button class="upvoteBtnNoUser m-2 btn btn-sm btn-outline-success float-end upvoteBtn"><p class="mb-0 useravatar">Upvote <%= comment.upvotes %></p></button>
-                            </form>
+                            </div>
                             <% } %>
                     </div>
                     

@@ -22,6 +22,9 @@ const commentSchema = new Schema({
 
 
 const postSchema = new Schema({
+    category: {
+        type: String,
+    },
     title: {
         type: String,
         required: true,

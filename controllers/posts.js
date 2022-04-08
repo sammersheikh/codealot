@@ -41,7 +41,6 @@ function show(req, res) {
     Post.findById(req.params.id, function(err, post) {
         if (post.comments) {
             // order the comments from highest upvotes to lowest upvotes
-            console.log('TESTETSTESTETSTSET')
             post.comments.sort(function(a, b) {
                 return b.upvotes - a.upvotes
             })

@@ -6,30 +6,36 @@
     </div>
     
     <% post.forEach(function(p) { %>
+      
       <main id="main" role="main"></main>
       <div class="container mb-3">
+
         <div class="row justify-content-center">
       <div class="card col-lg-4 cardForm">
         <div class="useravatar">
-          <h6 class="category username mt-3">Posted by <%= p.userName ? p.userName : 'Anonymous' %></h6> 
+          <h5 class="category useravatar mt-4 ml-3"><%= p.category %></h5>
           <% if (user && user._id.equals(p.user)) { %>
-          <div class="float-end mt-3">
-            <form class="text-end" action="/posts/<%= p.id %>?_method=DELETE" method="POST">
-              <button type="submit" class="btn-close" aria-label="Close"></button>
-            </form>   
+            <div class="category float-end mt-3">
+              <form class="text-end" action="/posts/<%= p.id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn-close" aria-label="Close"></button>
+              </form>   
+            </div>
+            <% } %>
           </div>
-          <% } %>
-        </div>
-        <hr>
-  <div class="card-body">
-    <h3 class="card-title"><%= p.title %></h3>
-    <p class="card-text lead"><%- p.details %></p>
-    <a href="posts/<%= p.id %>" class="btn btn-outline-primary">View Full Post</a>
-    <p class="mt-4 text-muted"><%= (p.createdAt).toLocaleString() %></p>
+          <hr>
+          <div class="card-body">
+            <h3 class="card-title"><%= p.title %></h3>
+            <p class="card-text lead"><%- p.details %></p>
+            <a href="posts/<%= p.id %>" class="btn btn-outline-primary">View Full Post</a>
+            <p class="mt-4 text-muted"><%= (p.createdAt).toLocaleString() %></p>
+            <h6 class="category">Posted by <%= p.userName ? p.userName : 'Anonymous' %></h6> 
   </div>
    </div>
      </div>
-</div>
+
+
+
+</div> 
     <% }) %>
 
 
